@@ -9,14 +9,19 @@
 
     <title>nphysics2d - Rust</title>
 
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css"
+          id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../dark.css">
+    <link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle">
+    <script src="../storage.js"></script>
     
 
     
     
 </head>
-<body class="rustdoc">
+<body class="rustdoc mod">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -27,10 +32,18 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'></p><script>window.sidebarCurrent = {name: 'nphysics2d', ty: 'mod', relpath: '../'};</script>
+        <p class='location'>Crate nphysics2d</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#modules">Modules</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'nphysics2d', ty: 'mod', relpath: '../'};</script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -42,30 +55,24 @@
         </form>
     </nav>
 
-    <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>nphysics2d</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>nphysics2d</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-0' class='srclink' href='../src/nphysics2d/up/up/src/lib.rs.html#1-162' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'>
-<h1 id='nphysics' class='section-header'><a href='#nphysics'>nphysics</a></h1>
+               </span><a class='srclink' href='../src/nphysics2d/lib.rs.html#1-274' title='goto source code'>[src]</a></span></h1><div class='docblock'><h1 id="nphysics" class="section-header"><a href="#nphysics">nphysics</a></h1>
 <p><strong>nphysics</strong> is a 2 and 3-dimensional physics engine for games and animations.
 It uses <a href="http://ncollide.org">ncollide</a> for collision detection, and
 <a href="http://nalgebra.org">nalgebra</a> for vector/matrix math. 2D and 3D
 implementations both share the same code!</p>
-
 <p>Examples are available in the <code>examples2d</code> and <code>examples3d</code> directories. There
 is also a short (outdated) <a href="http://youtu.be/CANjXZ5rocI">demonstration video</a>.
 An on-line version of this documentation is available
 <a href="http://nphysics.org">here</a>. Feel free to ask for help and discuss features on
 the official <a href="http://users.nphysics.org">user forum</a>.</p>
-
-<h2 id='why-another-physics-engine' class='section-header'><a href='#why-another-physics-engine'>Why another physics engine?</a></h2>
+<h2 id="why-another-physics-engine" class="section-header"><a href="#why-another-physics-engine">Why another physics engine?</a></h2>
 <p>There are a lot of physics engine out there.
 However having a physics engine written in Rust is much more fun than
 writing bindings and has several advantages:</p>
-
 <ul>
 <li>it shows that Rust is suitable for soft real-time applications</li>
 <li>it shows how well Rust behaves with highly generic code</li>
@@ -76,28 +83,23 @@ specializations for each dimension).</li>
 search for a physics engine and <strong>nphysics</strong> will be there, proudly
 exhibiting its <em>Rusty</em> sexyness.</li>
 </ul>
-
-<h2 id='compilation' class='section-header'><a href='#compilation'>Compilation</a></h2>
+<h2 id="compilation" class="section-header"><a href="#compilation">Compilation</a></h2>
 <p>You will need the latest release of the <a href="http://www.rust-lang.org">Rust compiler</a>
 and the official package manager: <a href="https://github.com/rust-lang/cargo">Cargo</a>.</p>
-
 <p>If you want to use the 2D version of <code>nphysics</code>, add the crate named
 <code>nphysics2d</code> to your dependencies:</p>
 
-<pre class='rust rust-example-rendered'>
-[<span class='ident'>dependencies</span>]
-<span class='ident'>nphysics2d</span> <span class='op'>=</span> <span class='string'>&quot;0.1.*&quot;</span></pre>
-
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><pre class="rust rust-example-rendered ignore">
+[<span class="ident">dependencies</span>]
+<span class="ident">nphysics2d</span> <span class="op">=</span> <span class="string">&quot;0.8&quot;</span></pre>
 <p>For the 3D version, add the crate named <code>nphysics3d</code>:</p>
 
-<pre class='rust rust-example-rendered'>
-[<span class='ident'>dependencies</span>]
-<span class='ident'>nphysics3d</span> <span class='op'>=</span> <span class='string'>&quot;0.1.*&quot;</span></pre>
-
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><pre class="rust rust-example-rendered ignore">
+[<span class="ident">dependencies</span>]
+<span class="ident">nphysics3d</span> <span class="op">=</span> <span class="string">&quot;0.8&quot;</span></pre>
 <p>Use <code>make examples</code> to build the demos and execute <code>./your_favorite_example_here --help</code>
 to see all the cool stuffs you can do.</p>
-
-<h2 id='features' class='section-header'><a href='#features'>Features</a></h2>
+<h2 id="features" class="section-header"><a href="#features">Features</a></h2>
 <ul>
 <li>Static and dynamic rigid bodies.</li>
 <li>Common convex primitives: cone, box, ball, cylinder.</li>
@@ -107,97 +109,117 @@ to see all the cool stuffs you can do.</p>
 <li>Ray casting.</li>
 <li>Swept sphere based continuous collision detection.</li>
 <li>Ball-in-socket joint.</li>
-<li>Fixed joint.</li>
+<li>FixedJoint joint.</li>
 <li>Sensors.</li>
 </ul>
-
-<h2 id='what-is-missing' class='section-header'><a href='#what-is-missing'>What is missing?</a></h2>
+<h2 id="what-is-missing" class="section-header"><a href="#what-is-missing">What is missing?</a></h2>
 <p><strong>nphysics</strong> is a very young library and needs to learn a lot of things to
 become a grown up. Many missing features are because of missing features on
 <strong>ncollide</strong>. Features missing from <strong>nphysics</strong> itself include:</p>
-
 <ul>
 <li>kinematic bodies</li>
 <li>efficient signaling system</li>
 <li>more joints, joint limits, joint motors and breakable joints.</li>
-<li>soft-bodies (see <a href="https://github.com/natal/roft">https://github.com/natal/roft</a> for a draft)</li>
+<li>soft-bodies (see https://github.com/natal/roft for a draft)</li>
 <li>parallel pipeline</li>
 <li>GPU-based pipeline</li>
 </ul>
-
-<h2 id='dependencies' class='section-header'><a href='#dependencies'>Dependencies</a></h2>
+<h2 id="dependencies" class="section-header"><a href="#dependencies">Dependencies</a></h2>
 <p>All dependencies are automatically cloned with a recursive clone.
 The libraries needed to compile the physics engine are:</p>
-
 <ul>
 <li><a href="http://ncollide.org">ncollide</a>: the collision detection library.</li>
 <li><a href="http://nalgebra.org">nalgebra</a>: the linear algebra library.</li>
 </ul>
-
 <p>The libraries needed to compile the examples are:</p>
 </div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class='mod' href='aliases/index.html'
-                                  title='nphysics2d::aliases'>aliases</a></td>
-                           <td class='docblock short'>
-                                <p>Aliases for complicated parameterized types.</p>
+                           <td><a class="mod" href="algebra/index.html"
+                                  title='mod nphysics2d::algebra'>algebra</a></td>
+                           <td class='docblock-short'>
+                                <p>Dynamics-specific algebraic entities: velocity, forces, and inertias.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='mod' href='detection/index.html'
-                                  title='nphysics2d::detection'>detection</a></td>
-                           <td class='docblock short'>
-                                <p>Collision detection and joints.</p>
+                           <td><a class="mod" href="counters/index.html"
+                                  title='mod nphysics2d::counters'>counters</a></td>
+                           <td class='docblock-short'>
+                                <p>Counters for benchmarking various parts of the physics engine.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='mod' href='integration/index.html'
-                                  title='nphysics2d::integration'>integration</a></td>
-                           <td class='docblock short'>
-                                <p>Position and orientation update of rigid bodies.</p>
+                           <td><a class="mod" href="detection/index.html"
+                                  title='mod nphysics2d::detection'>detection</a></td>
+                           <td class='docblock-short'>
+                                <p>Collision detection information.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='mod' href='math/index.html'
-                                  title='nphysics2d::math'>math</a></td>
-                           <td class='docblock short'>
+                           <td><a class="mod" href="force_generator/index.html"
+                                  title='mod nphysics2d::force_generator'>force_generator</a></td>
+                           <td class='docblock-short'>
+                                <p>Persistant force generation.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="joint/index.html"
+                                  title='mod nphysics2d::joint'>joint</a></td>
+                           <td class='docblock-short'>
+                                <p>Joints using the reduced-coordinates formalism or using constraints.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="math/index.html"
+                                  title='mod nphysics2d::math'>math</a></td>
+                           <td class='docblock-short'>
                                 <p>Compilation flags dependent aliases for mathematical types.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='mod' href='object/index.html'
-                                  title='nphysics2d::object'>object</a></td>
-                           <td class='docblock short'>
+                           <td><a class="mod" href="object/index.html"
+                                  title='mod nphysics2d::object'>object</a></td>
+                           <td class='docblock-short'>
                                 <p>Objects that may be added to the physical world.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='mod' href='resolution/index.html'
-                                  title='nphysics2d::resolution'>resolution</a></td>
-                           <td class='docblock short'>
-                                <p>Constraint resolution.</p>
+                           <td><a class="mod" href="solver/index.html"
+                                  title='mod nphysics2d::solver'>solver</a></td>
+                           <td class='docblock-short'>
+                                <p>Constraint solver.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='mod' href='utils/index.html'
-                                  title='nphysics2d::utils'>utils</a></td>
-                           <td class='docblock short'>
+                           <td><a class="mod" href="utils/index.html"
+                                  title='mod nphysics2d::utils'>utils</a></td>
+                           <td class='docblock-short'>
                                 <p>Miscellaneous utilities.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='mod' href='volumetric/index.html'
-                                  title='nphysics2d::volumetric'>volumetric</a></td>
-                           <td class='docblock short'>
+                           <td><a class="mod" href="volumetric/index.html"
+                                  title='mod nphysics2d::volumetric'>volumetric</a></td>
+                           <td class='docblock-short'>
                                 <p>Volume and inertia tensor computation.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='mod' href='world/index.html'
-                                  title='nphysics2d::world'>world</a></td>
-                           <td class='docblock short'>
+                           <td><a class="mod" href="world/index.html"
+                                  title='mod nphysics2d::world'>world</a></td>
+                           <td class='docblock-short'>
                                 <p>The physics world.</p>
+
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -212,18 +234,22 @@ The libraries needed to compile the physics engine are:</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>↹</kbd></dt>
+                    <dd>Switch tab</dd>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 
@@ -255,11 +281,8 @@ The libraries needed to compile the physics engine are:</p>
     <script>
         window.rootPath = "../";
         window.currentCrate = "nphysics2d";
-        window.playgroundUrl = "";
     </script>
-    <script src="../jquery.js"></script>
     <script src="../main.js"></script>
-    
     <script defer src="../search-index.js"></script>
 </body>
 </html>

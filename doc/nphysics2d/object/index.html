@@ -9,14 +9,19 @@
 
     <title>nphysics2d::object - Rust</title>
 
-    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css"
+          id="mainThemeStyle">
+    
+    <link rel="stylesheet" type="text/css" href="../../dark.css">
+    <link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle">
+    <script src="../../storage.js"></script>
     
 
     
     
 </head>
-<body class="rustdoc">
+<body class="rustdoc mod">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -27,10 +32,18 @@
     
 
     <nav class="sidebar">
+        <div class="sidebar-menu">&#9776;</div>
         
-        <p class='location'><a href='../index.html'>nphysics2d</a></p><script>window.sidebarCurrent = {name: 'object', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+        <p class='location'>Module object</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'><a href='../index.html'>nphysics2d</a></p><script>window.sidebarCurrent = {name: 'object', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div>
     </nav>
 
+    <div class="theme-picker">
+        <button id="theme-picker" aria-label="Pick another theme!">
+            <img src="../../brush.svg" width="18" alt="Pick another theme!">
+        </button>
+        <div id="theme-choices"></div>
+    </div>
+    <script src="../../theme.js"></script>
     <nav class="sub">
         <form class="search-form js-only">
             <div class="search-container">
@@ -42,111 +55,205 @@
         </form>
     </nav>
 
-    <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>nphysics2d</a>::<wbr><a class='mod' href=''>object</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content"><h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>nphysics2d</a>::<wbr><a class="mod" href=''>object</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-1527' class='srclink' href='../../src/nphysics2d/up/up/src/object/mod.rs.html#1-15' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>Objects that may be added to the physical world.</p>
+               </span><a class='srclink' href='../../src/nphysics2d/object/mod.rs.html#1-22' title='goto source code'>[src]</a></span></h1><div class='docblock'><p>Objects that may be added to the physical world.</p>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class='struct' href='struct.RigidBody.html'
-                                  title='nphysics2d::object::RigidBody'>RigidBody</a></td>
-                           <td class='docblock short'>
-                                <p>The rigid body structure.</p>
+                           <td><a class="struct" href="struct.ActivationStatus.html"
+                                  title='struct nphysics2d::object::ActivationStatus'>ActivationStatus</a></td>
+                           <td class='docblock-short'>
+                                <p>The activation status of a body.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='struct' href='struct.RigidBodyCollisionGroups.html'
-                                  title='nphysics2d::object::RigidBodyCollisionGroups'>RigidBodyCollisionGroups</a></td>
-                           <td class='docblock short'>
-                                <p>Groups of collision used to filter which object collide with which other one.
-nphysics use a specific group for its own purposes (i.e. the group of static objects).
-The <code>group 29</code> is reserved and you cannot use it.</p>
+                           <td><a class="struct" href="struct.Bodies.html"
+                                  title='struct nphysics2d::object::Bodies'>Bodies</a></td>
+                           <td class='docblock-short'>
+                                <p>Iterator yielding all the bodies on a body set.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='struct' href='struct.Sensor.html'
-                                  title='nphysics2d::object::Sensor'>Sensor</a></td>
-                           <td class='docblock short'>
-                                <p>An object capable of detecting interferances with other entities without interacting with them.</p>
+                           <td><a class="struct" href="struct.BodyHandle.html"
+                                  title='struct nphysics2d::object::BodyHandle'>BodyHandle</a></td>
+                           <td class='docblock-short'>
+                                <p>A unique identifier of a body added to the world.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='struct' href='struct.SensorCollisionGroups.html'
-                                  title='nphysics2d::object::SensorCollisionGroups'>SensorCollisionGroups</a></td>
-                           <td class='docblock short'>
-                                <p>Groups of collision used to filter which object collide with which other one.
-nphysics use a specific group for its own purposes (i.e. the group of static objects).
-The <code>group 29</code> is reserved and you cannot use it.</p>
+                           <td><a class="struct" href="struct.BodySet.html"
+                                  title='struct nphysics2d::object::BodySet'>BodySet</a></td>
+                           <td class='docblock-short'>
+                                <p>A set containing all the bodies added to the world.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ColliderData.html"
+                                  title='struct nphysics2d::object::ColliderData'>ColliderData</a></td>
+                           <td class='docblock-short'>
+                                <p>Data stored into each collider.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Ground.html"
+                                  title='struct nphysics2d::object::Ground'>Ground</a></td>
+                           <td class='docblock-short'>
+                                <p>A singleton representing the ground.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Material.html"
+                                  title='struct nphysics2d::object::Material'>Material</a></td>
+                           <td class='docblock-short'>
+                                <p>Description of the state of surface of a solid.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Multibody.html"
+                                  title='struct nphysics2d::object::Multibody'>Multibody</a></td>
+                           <td class='docblock-short'>
+                                <p>An articulated body simulated using the reduced-coordinates approach.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.MultibodyLinkId.html"
+                                  title='struct nphysics2d::object::MultibodyLinkId'>MultibodyLinkId</a></td>
+                           <td class='docblock-short'>
+                                <p>The identifier of a multibody link.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.MultibodyLinkMut.html"
+                                  title='struct nphysics2d::object::MultibodyLinkMut'>MultibodyLinkMut</a></td>
+                           <td class='docblock-short'>
+                                <p>Mutable reference to a multibody link.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.MultibodyLinkRef.html"
+                                  title='struct nphysics2d::object::MultibodyLinkRef'>MultibodyLinkRef</a></td>
+                           <td class='docblock-short'>
+                                <p>A reference to a multibody link.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.MultibodyLinks.html"
+                                  title='struct nphysics2d::object::MultibodyLinks'>MultibodyLinks</a></td>
+                           <td class='docblock-short'>
+                                <p>Iterator through all the multibody links.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.MultibodyWorkspace.html"
+                                  title='struct nphysics2d::object::MultibodyWorkspace'>MultibodyWorkspace</a></td>
+                           <td class='docblock-short'>
+                                <p>A temporary workspace for various updates of the multibody.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.RigidBody.html"
+                                  title='struct nphysics2d::object::RigidBody'>RigidBody</a></td>
+                           <td class='docblock-short'>
+                                <p>A rigid body.</p>
+
                            </td>
                        </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class='enum' href='enum.ActivationState.html'
-                                  title='nphysics2d::object::ActivationState'>ActivationState</a></td>
-                           <td class='docblock short'>
-                                <p>The activation state of a rigid body.</p>
+                           <td><a class="enum" href="enum.Body.html"
+                                  title='enum nphysics2d::object::Body'>Body</a></td>
+                           <td class='docblock-short'>
+                                <p>A body contained by the physics world.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='enum' href='enum.RigidBodyState.html'
-                                  title='nphysics2d::object::RigidBodyState'>RigidBodyState</a></td>
-                           <td class='docblock short'>
-                                <p>The movement state of a rigid body.</p>
+                           <td><a class="enum" href="enum.BodyMut.html"
+                                  title='enum nphysics2d::object::BodyMut'>BodyMut</a></td>
+                           <td class='docblock-short'>
+                                <p>A mutable body contained by the physics world.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='enum' href='enum.WorldObject.html'
-                                  title='nphysics2d::object::WorldObject'>WorldObject</a></td>
-                           <td class='docblock short'>
-                                <p>An object that has been added to a World.</p>
+                           <td><a class="enum" href="enum.BodyPart.html"
+                                  title='enum nphysics2d::object::BodyPart'>BodyPart</a></td>
+                           <td class='docblock-short'>
+                                <p>A mutable body part contained by the physics world.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='enum' href='enum.WorldObjectBorrowed.html'
-                                  title='nphysics2d::object::WorldObjectBorrowed'>WorldObjectBorrowed</a></td>
-                           <td class='docblock short'>
-                                <p>Reference to a world object.</p>
+                           <td><a class="enum" href="enum.BodyPartMut.html"
+                                  title='enum nphysics2d::object::BodyPartMut'>BodyPartMut</a></td>
+                           <td class='docblock-short'>
+                                <p>A mutable body part contained by the physics world.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='enum' href='enum.WorldObjectBorrowedMut.html'
-                                  title='nphysics2d::object::WorldObjectBorrowedMut'>WorldObjectBorrowedMut</a></td>
-                           <td class='docblock short'>
-                                <p>Mutable reference to a world object.</p>
-                           </td>
-                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
-<table>
-                       <tr class=' module-item'>
-                           <td><a class='constant' href='constant.SENSOR_GROUP_ID.html'
-                                  title='nphysics2d::object::SENSOR_GROUP_ID'>SENSOR_GROUP_ID</a></td>
-                           <td class='docblock short'>
-                                <p>Reserved group id for sensors.</p>
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class='constant' href='constant.STATIC_GROUP_ID.html'
-                                  title='nphysics2d::object::STATIC_GROUP_ID'>STATIC_GROUP_ID</a></td>
-                           <td class='docblock short'>
-                                <p>Reserved group id for static rigid bodies.</p>
+                           <td><a class="enum" href="enum.BodyStatus.html"
+                                  title='enum nphysics2d::object::BodyStatus'>BodyStatus</a></td>
+                           <td class='docblock-short'>
+                                <p>The status of a body.</p>
+
                            </td>
                        </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
 <table>
                        <tr class=' module-item'>
-                           <td><a class='type' href='type.RigidBodyHandle.html'
-                                  title='nphysics2d::object::RigidBodyHandle'>RigidBodyHandle</a></td>
-                           <td class='docblock short'>
-                                <p>A shared, mutable, rigid body.</p>
+                           <td><a class="type" href="type.Collider.html"
+                                  title='type nphysics2d::object::Collider'>Collider</a></td>
+                           <td class='docblock-short'>
+                                <p>Type of a collider.</p>
+
                            </td>
                        </tr>
                        <tr class=' module-item'>
-                           <td><a class='type' href='type.SensorHandle.html'
-                                  title='nphysics2d::object::SensorHandle'>SensorHandle</a></td>
-                           <td class='docblock short'>
-                                <p>A shared, mutable, sensor.</p>
+                           <td><a class="type" href="type.ColliderHandle.html"
+                                  title='type nphysics2d::object::ColliderHandle'>ColliderHandle</a></td>
+                           <td class='docblock-short'>
+                                <p>Type of the handle of a collider.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Colliders.html"
+                                  title='type nphysics2d::object::Colliders'>Colliders</a></td>
+                           <td class='docblock-short'>
+                                <p>Type of a reference to a collider.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Sensor.html"
+                                  title='type nphysics2d::object::Sensor'>Sensor</a></td>
+                           <td class='docblock-short'>
+                                <p>Type of a sensor.</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.SensorHandle.html"
+                                  title='type nphysics2d::object::SensorHandle'>SensorHandle</a></td>
+                           <td class='docblock-short'>
+                                <p>Type of the handle of a sensor.</p>
+
                            </td>
                        </tr></table></section>
     <section id='search' class="content hidden"></section>
@@ -161,18 +268,22 @@ The <code>group 29</code> is reserved and you cannot use it.</p>
                 <h2>Keyboard Shortcuts</h2>
 
                 <dl>
-                    <dt>?</dt>
+                    <dt><kbd>?</kbd></dt>
                     <dd>Show this help dialog</dd>
-                    <dt>S</dt>
+                    <dt><kbd>S</kbd></dt>
                     <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
+                    <dt><kbd>↑</kbd></dt>
                     <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
+                    <dt><kbd>↓</kbd></dt>
                     <dd>Move down in search results</dd>
-                    <dt>&#9166;</dt>
+                    <dt><kbd>↹</kbd></dt>
+                    <dd>Switch tab</dd>
+                    <dt><kbd>&#9166;</kbd></dt>
                     <dd>Go to active search result</dd>
-                    <dt>+</dt>
-                    <dd>Collapse/expand all sections</dd>
+                    <dt><kbd>+</kbd></dt>
+                    <dd>Expand all sections</dd>
+                    <dt><kbd>-</kbd></dt>
+                    <dd>Collapse all sections</dd>
                 </dl>
             </div>
 
@@ -204,11 +315,8 @@ The <code>group 29</code> is reserved and you cannot use it.</p>
     <script>
         window.rootPath = "../../";
         window.currentCrate = "nphysics2d";
-        window.playgroundUrl = "";
     </script>
-    <script src="../../jquery.js"></script>
     <script src="../../main.js"></script>
-    
     <script defer src="../../search-index.js"></script>
 </body>
 </html>
