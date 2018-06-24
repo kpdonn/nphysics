@@ -48,14 +48,7 @@ fn now() -> f64 {
 }
 
 #[cfg(target_arch = "wasm32")]
-#[allow(unused_results)] // Needed because the js macro triggers it.
-fn now() -> f64 {
-    use stdweb::unstable::TryInto;
-
-    // https://developer.mozilla.org/en-US/docs/Web/API/Performance/now
-    let v = js! { return performance.now() / 1000.0; };
-    v.try_into().unwrap()
-}
+use now;
 
 impl Display for Timer {
     fn fmt(&self, f: &mut Formatter) -> Result<(), Error> {

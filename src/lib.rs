@@ -88,11 +88,11 @@ The libraries needed to compile the examples are:
 #![deny(unused_parens)]
 #![deny(non_upper_case_globals)]
 #![deny(unused_qualifications)]
-#![deny(missing_docs)]
 #![deny(unused_results)]
 #![warn(non_camel_case_types)]
 #![allow(missing_copy_implementations)]
 #![doc(html_root_url = "http://nphysics-dev.org/doc")]
+#![feature(proc_macro, wasm_custom_section, wasm_import_module)]
 
 #[macro_use]
 extern crate approx;
@@ -116,8 +116,7 @@ extern crate slab;
 extern crate time;
 
 #[cfg(target_arch = "wasm32")]
-#[macro_use]
-extern crate stdweb;
+extern crate wasm_bindgen;
 
 //#[cfg(test)]
 //extern crate test;
@@ -138,8 +137,10 @@ pub mod world;
 #[cfg(feature = "dim3")]
 pub mod math {
   use algebra::{Force3, Inertia3, Velocity3};
-  use na::{Dynamic, Isometry3, Matrix3, Matrix6, MatrixMN, MatrixSlice6xX, MatrixSliceMut6xX,
-           Point3, Translation3, U3, U6, UnitQuaternion, Vector3, Vector6};
+  use na::{
+    Dynamic, Isometry3, Matrix3, Matrix6, MatrixMN, MatrixSlice6xX, MatrixSliceMut6xX, Point3,
+    Translation3, U3, U6, UnitQuaternion, Vector3, Vector6,
+  };
 
   /// The maximum number of possible rotations and translations of a rigid body.
   pub const SPATIAL_DIM: usize = 6;
@@ -213,8 +214,10 @@ pub mod math {
 #[cfg(feature = "dim2")]
 pub mod math {
   use algebra::{Force2, Inertia2, Velocity2};
-  use na::{Dynamic, Isometry2, Matrix1, Matrix3, MatrixMN, MatrixSlice3xX, MatrixSliceMut3xX,
-           Point2, Translation2, U1, U2, U3, UnitComplex, Vector1, Vector2, Vector3};
+  use na::{
+    Dynamic, Isometry2, Matrix1, Matrix3, MatrixMN, MatrixSlice3xX, MatrixSliceMut3xX, Point2,
+    Translation2, U1, U2, U3, UnitComplex, Vector1, Vector2, Vector3,
+  };
 
   /// The maximum number of possible rotations and translations of a rigid body.
   pub const SPATIAL_DIM: usize = 3;
@@ -282,4 +285,13 @@ pub mod math {
 
   /// The type of a mutable slice of the constraint jacobian in twist coordinates.
   pub type JacobianSliceMut<'a, N> = MatrixSliceMut3xX<'a, N>;
+}
+
+#[cfg(target_arch = "wasm32")]
+use wasm_bindgen::prelude::*;
+#[cfg(target_arch = "wasm32")]
+#[wasm_bindgen]
+extern "C" {
+  #[wasm_bindgen(js_namespace = performance)]
+  pub fn now() -> f64;
 }

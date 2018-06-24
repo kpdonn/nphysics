@@ -28,7 +28,8 @@ downcast   = "0.9"
 ncollide2d = "0.15"
 
 [target.wasm32-unknown-unknown.dependencies]
-stdweb = "0.4"
+wasm-bindgen = "0.2.11"
+
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 time = "0.1"
