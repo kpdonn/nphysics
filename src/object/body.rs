@@ -189,16 +189,14 @@ impl<'a, N: Real> BodyMut<'a, N> {
     /// Applies a displacement to all the degrees of freedom of this body.
     #[inline]
     pub fn apply_displacement(&mut self, disp: &[N]) {
-        match *self {
-            BodyMut::RigidBody(ref mut rb) => {
-                #[cfg(target_arch = "wasm32")]
-                use log;
-                #[cfg(target_arch = "wasm32")]
-                log("body apply_displacement calling from_slice");
-                rb.apply_displacement(&Velocity::from_slice(disp))
+        if !self.is_static() {
+            match *self {
+                BodyMut::RigidBody(ref mut rb) => {
+                    rb.apply_displacement(&Velocity::from_slice(disp))
+                }
+                BodyMut::Multibody(ref mut mb) => mb.apply_displacement(disp),
+                BodyMut::Ground(_) => {}
             }
-            BodyMut::Multibody(ref mut mb) => mb.apply_displacement(disp),
-            BodyMut::Ground(_) => {}
         }
     }
 }

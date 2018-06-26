@@ -5,8 +5,9 @@ use joint::{unit_constraint, JointConstraint};
 use math::{AngularVector, Point, Vector, DIM, SPATIAL_DIM};
 use object::{BodyHandle, BodySet};
 use solver::helper;
-use solver::{ConstraintSet, GenericNonlinearConstraint, IntegrationParameters,
-             NonlinearConstraintGenerator};
+use solver::{
+    ConstraintSet, GenericNonlinearConstraint, IntegrationParameters, NonlinearConstraintGenerator,
+};
 
 /// A constraint that remove all be one translational degrees of freedom.
 pub struct PrismaticConstraint<N: Real> {
@@ -204,7 +205,7 @@ impl<N: Real> JointConstraint<N> for PrismaticConstraint<N> {
             if c.impulse_id < DIM - 1 {
                 self.lin_impulses[c.impulse_id] = c.impulse;
             } else if c.impulse_id < SPATIAL_DIM - 1 {
-                self.ang_impulses[c.impulse_id - DIM + 1] = c.impulse;
+                self.ang_impulses[c.impulse_id + 1 - DIM] = c.impulse;
             } else {
                 self.limit_impulse = c.impulse
             }
@@ -267,13 +268,7 @@ impl<N: Real> NonlinearConstraintGenerator<N> for PrismaticConstraint<N> {
             let axis = pos1 * self.axis1;
 
             return helper::project_anchor_to_axis(
-                params,
-                &body1,
-                &body2,
-                &anchor1,
-                &anchor2,
-                &axis,
-                jacobians,
+                params, &body1, &body2, &anchor1, &anchor2, &axis, jacobians,
             );
         } else if i == 2 {
             let axis = pos1 * self.axis1;

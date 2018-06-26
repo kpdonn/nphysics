@@ -94,10 +94,6 @@ impl<N: Real> Velocity2<N> {
     /// The linear part of the velocity is expected to be first inside of the input slice.
     #[inline]
     pub fn from_slice(data: &[N]) -> Self {
-        #[cfg(target_arch = "wasm32")]
-        use log;
-        #[cfg(target_arch = "wasm32")]
-        log("calling from_slice from unknown");
         Self::new(Vector2::new(data[0], data[1]), data[2])
     }
 
