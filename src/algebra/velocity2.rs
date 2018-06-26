@@ -1,7 +1,7 @@
+use na::storage::Storage;
+use na::{self, Isometry2, Real, Rotation2, U3, Vector, Vector1, Vector2, Vector3};
 use std::mem;
 use std::ops::{Add, AddAssign, Mul, Sub, SubAssign};
-use na::{self, Isometry2, Real, Rotation2, U3, Vector, Vector1, Vector2, Vector3};
-use na::storage::Storage;
 
 /// A velocity structure combining both the linear angular velocities of a point.
 #[derive(Copy, Clone, Debug)]
@@ -50,7 +50,7 @@ impl<N: Real> Velocity2<N> {
     }
 
     /// This velocity seen as a slice.
-    /// 
+    ///
     /// The linear part is stored first.
     #[inline]
     pub fn as_slice(&self) -> &[N] {
@@ -58,7 +58,7 @@ impl<N: Real> Velocity2<N> {
     }
 
     /// This velocity seen as a mutable slice.
-    /// 
+    ///
     /// The linear part is stored first.
     #[inline]
     pub fn as_mut_slice(&mut self) -> &mut [N] {
@@ -66,7 +66,7 @@ impl<N: Real> Velocity2<N> {
     }
 
     /// This velocity seen as a vector.
-    /// 
+    ///
     /// The linear part is stored first.
     #[inline]
     pub fn as_vector(&self) -> &Vector3<N> {
@@ -74,7 +74,7 @@ impl<N: Real> Velocity2<N> {
     }
 
     /// This velocity seen as a mutable vector.
-    /// 
+    ///
     /// The linear part is stored first.
     #[inline]
     pub fn as_vector_mut(&mut self) -> &mut Vector3<N> {
@@ -82,7 +82,7 @@ impl<N: Real> Velocity2<N> {
     }
 
     /// Create a velocity from a vector.
-    /// 
+    ///
     /// The linear part of the velocity is expected to be first inside of the input vector.
     #[inline]
     pub fn from_vector<S: Storage<N, U3>>(data: &Vector<N, U3, S>) -> Self {
@@ -90,10 +90,14 @@ impl<N: Real> Velocity2<N> {
     }
 
     /// Create a velocity from a slice.
-    /// 
+    ///
     /// The linear part of the velocity is expected to be first inside of the input slice.
     #[inline]
     pub fn from_slice(data: &[N]) -> Self {
+        #[cfg(target_arch = "wasm32")]
+        use log;
+        #[cfg(target_arch = "wasm32")]
+        log("calling from_slice from unknown");
         Self::new(Vector2::new(data[0], data[1]), data[2])
     }
 

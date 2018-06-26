@@ -3,7 +3,6 @@ use na::{self, DVectorSlice, DVectorSliceMut, Real};
 use math::{Force, Inertia, Isometry, Point, Velocity};
 use object::{BodyHandle, Ground, Multibody, MultibodyLinkMut, MultibodyLinkRef, RigidBody};
 use solver::IntegrationParameters;
-
 /// The status of a body.
 #[derive(Copy, Clone, PartialEq, Eq, Hash, Debug)]
 pub enum BodyStatus {
@@ -191,7 +190,13 @@ impl<'a, N: Real> BodyMut<'a, N> {
     #[inline]
     pub fn apply_displacement(&mut self, disp: &[N]) {
         match *self {
-            BodyMut::RigidBody(ref mut rb) => rb.apply_displacement(&Velocity::from_slice(disp)),
+            BodyMut::RigidBody(ref mut rb) => {
+                #[cfg(target_arch = "wasm32")]
+                use log;
+                #[cfg(target_arch = "wasm32")]
+                log("body apply_displacement calling from_slice");
+                rb.apply_displacement(&Velocity::from_slice(disp))
+            }
             BodyMut::Multibody(ref mut mb) => mb.apply_displacement(disp),
             BodyMut::Ground(_) => {}
         }

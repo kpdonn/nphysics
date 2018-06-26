@@ -1,6 +1,7 @@
 use na::{DVectorSliceMut, Real};
 
 use joint::Joint;
+
 use math::{Isometry, JacobianSliceMut, Vector, Velocity, SPATIAL_DIM};
 use solver::IntegrationParameters;
 
@@ -53,16 +54,28 @@ impl<N: Real> Joint<N> for FreeJoint<N> {
     }
 
     fn integrate(&mut self, params: &IntegrationParameters<N>, vels: &[N]) {
+        #[cfg(target_arch = "wasm32")]
+        use log;
+        #[cfg(target_arch = "wasm32")]
+        log("integrate calling from_slice");
         let disp = Velocity::from_slice(vels) * params.dt;
         self.apply_displacement(&disp);
     }
 
     fn apply_displacement(&mut self, disp: &[N]) {
+        #[cfg(target_arch = "wasm32")]
+        use log;
+        #[cfg(target_arch = "wasm32")]
+        log("apply_displacement calling from_slice");
         let disp = Velocity::from_slice(disp);
         self.apply_displacement(&disp);
     }
 
     fn jacobian_mul_coordinates(&self, vels: &[N]) -> Velocity<N> {
+        #[cfg(target_arch = "wasm32")]
+        use log;
+        #[cfg(target_arch = "wasm32")]
+        log("jacobian_mul_coordinates calling from_slice");
         Velocity::from_slice(vels)
     }
 

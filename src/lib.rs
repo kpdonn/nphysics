@@ -294,4 +294,6 @@ use wasm_bindgen::prelude::*;
 extern "C" {
   #[wasm_bindgen(js_namespace = performance)]
   pub fn now() -> f64;
+  #[wasm_bindgen(js_namespace = console)]
+  pub fn log(message: &str);
 }
