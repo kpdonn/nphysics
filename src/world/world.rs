@@ -12,6 +12,7 @@ use counters::Counters;
 use detection::{ActivationManager, ColliderContactManifold};
 use force_generator::{ForceGenerator, ForceGeneratorHandle};
 use joint::{ConstraintHandle, Joint, JointConstraint};
+use js_func::log;
 use math::{Inertia, Isometry, Point, Vector};
 use object::{
     Body, BodyHandle, BodyMut, BodyPart, BodySet, BodyStatus, Collider, ColliderData,
@@ -228,7 +229,8 @@ impl<N: Real> World<N> {
             let new_pos;
             {
                 // FIXME: update only if the position changed (especially for static bodies).
-                let collider = self.cworld
+                let collider = self
+                    .cworld
                     .collision_object_mut(*collider_id)
                     .expect("Internal error: collider not found.");
                 let body = self.bodies.body_part(collider.data_mut().body());
@@ -359,7 +361,8 @@ impl<N: Real> World<N> {
 
         while i < self.colliders_w_parent.len() {
             let cid = self.colliders_w_parent[i];
-            let parent = self.collider(cid)
+            let parent = self
+                .collider(cid)
                 .expect("Internal error: collider not present")
                 .data()
                 .body();

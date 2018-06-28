@@ -48,7 +48,9 @@ fn now() -> f64 {
 }
 
 #[cfg(target_arch = "wasm32")]
-use now;
+fn now() -> f64 {
+    0f64
+}
 
 impl Display for Timer {
     fn fmt(&self, f: &mut Formatter) -> Result<(), Error> {

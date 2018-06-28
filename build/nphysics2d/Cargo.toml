@@ -25,7 +25,9 @@ alga       = "0.5"
 nalgebra   = "0.14"
 approx     = "0.1"
 downcast   = "0.9"
-ncollide2d = "0.15"
+ncollide2d = { path = "/Users/kevindonnelly/workspace/ncollide/build/ncollide2d"  }
+js_func = { path = "/Users/kevindonnelly/workspace/slime_volleyball/js_func"  }
+
 
 [target.wasm32-unknown-unknown.dependencies]
 wasm-bindgen = "0.2.11"

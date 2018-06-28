@@ -100,6 +100,7 @@ extern crate approx;
 extern crate downcast;
 
 extern crate alga;
+extern crate js_func;
 extern crate nalgebra as na;
 #[cfg(feature = "dim2")]
 extern crate ncollide2d as ncollide;
@@ -114,9 +115,6 @@ extern crate slab;
  */
 #[cfg(not(target_arch = "wasm32"))]
 extern crate time;
-
-#[cfg(target_arch = "wasm32")]
-extern crate wasm_bindgen;
 
 //#[cfg(test)]
 //extern crate test;
@@ -285,14 +283,4 @@ pub mod math {
 
   /// The type of a mutable slice of the constraint jacobian in twist coordinates.
   pub type JacobianSliceMut<'a, N> = MatrixSliceMut3xX<'a, N>;
-}
-
-#[cfg(target_arch = "wasm32")]
-use wasm_bindgen::prelude::*;
-#[cfg(target_arch = "wasm32")]
-#[wasm_bindgen]
-extern "C" {
-  #[wasm_bindgen(js_namespace = performance)]
-  pub fn now() -> f64;
-
 }
